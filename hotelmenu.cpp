@@ -9,6 +9,7 @@ int main(){
     cout << " Choose 2 if you want to eat Punjabi . "      << endl;
     cout << " Choose 3 if you want to eat South Indian . " << endl;    
     cout << " Choose 4 if you want to eat Sweet Dishes . " << endl;  
+    cout << " Choose 5 to exit ." << endl ;
     
     cout << "Enter your choice from menu :";
     cin >> choice;
@@ -163,9 +164,11 @@ int main(){
 
             goto choice;
         break;
-        default:
-        cout << "Thank for comming , Visit Us Again ";
+        case 5:
+            cout << "Thanks for visiting Us." << endl;
+            exit(0);
+        break;
+            
     }
-
     return 0;
 }
