@@ -69,7 +69,9 @@ int main(){
                     bill = 40 * Punquan ; 
                     cout << "Our bill is $" << bill << " only !" << endl;
                     cout << "Thaks for visiting Us." << endl;
-                break;
+                    cout << endl;
+                    cout << endl;
+                    break;
                 case 2: 
                     cout << "You want to order Panner Tikka ." << endl;
                     cout << "How much quantity you want : ";
@@ -77,6 +79,8 @@ int main(){
                     bill = 30 * Punquan ; 
                     cout << "Our bill is $" << bill << " only !" << endl;
                     cout << "Thaks for visiting Us." << endl;
+                    cout << endl;
+                    cout << endl;
                 break;
                 case 3: 
                     cout << "You want to order Chapp." << endl;
@@ -85,6 +89,8 @@ int main(){
                     bill = 20 * Punquan ; 
                     cout << "Our bill is $" << bill << " only !" << endl;
                     cout << "Thaks for visiting Us." << endl;
+                    cout << endl;
+                    cout << endl;
                  break;
             }
 
@@ -105,6 +111,8 @@ int main(){
                     bill = 10 * Southquan ;
                     cout << "Your Bill is $" << bill << " only !" << endl;
                     cout << "Thanks For visiting Us." << endl;
+                    cout << endl;
+                    cout << endl;
                 break;
                 case 2: 
                     cout << "You want to eat Vada." << endl;
@@ -113,6 +121,8 @@ int main(){
                     bill = 10 * Southquan ;
                     cout << "Your Bill is $" << bill << " only !" << endl;
                     cout << "Thanks For visiting Us." << endl;
+                    cout << endl;
+                    cout << endl;
                 break;
                 case 3: 
                     cout << "You want to eat Dhosa." << endl;
@@ -121,6 +131,8 @@ int main(){
                     bill = 15 * Southquan ;
                     cout << "Your Bill is $" << bill << " only !" << endl;
                     cout << "Thanks For visiting Us." << endl;
+                    cout << endl;
+                    cout << endl;
                 break;
 
             }
@@ -142,6 +154,8 @@ int main(){
                     bill = 10 * Sweetquan ;
                     cout << "Your Bill is $" << bill << " only !" << endl;
                     cout << "Thanks For visiting Us." << endl;
+                    cout << endl;
+                    cout << endl;
                 break;
                 case 2:
                     cout << "You want to eat Rabdi." << endl;
@@ -150,6 +164,8 @@ int main(){
                     bill = 10 * Sweetquan ;
                     cout << "Your Bill is $" << bill << " only !" << endl;
                     cout << "Thanks For visiting Us." << endl;
+                    cout << endl;
+                    cout << endl;
                 break;
                 case 3:
                     cout << "You want to eat Barfi." << endl;
@@ -158,6 +174,8 @@ int main(){
                     bill = 10 * Sweetquan ;
                     cout << "Your Bill is $" << bill << " only !" << endl;
                     cout << "Thanks For visiting Us." << endl;
+                    cout << endl;
+                    cout << endl;
                 break;
 
             }
