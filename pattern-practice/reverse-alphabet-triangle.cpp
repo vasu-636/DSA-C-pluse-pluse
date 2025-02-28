@@ -3,8 +3,8 @@ using namespace std;
 
 int main(){
 
-    for(char i= 'D' ; i >='A'; i-- ){
-        for(char j='D' ; j >=i ; j--){
+    for( char i = 'D' ; i >= 'A' ; i--){
+        for(char j = 'A' ; j <= i ; j++){
             cout << j << " ";
         }
         cout << endl;
