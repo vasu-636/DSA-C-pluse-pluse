@@ -8,7 +8,7 @@ int main() {
             if(j == 'C'){
                 cout << "* ";
             }
-            else if(j == 'A' || j == 'B' || j == 'D' || j == 'E'){
+            else {
                 cout << j << " ";
             }
         }
