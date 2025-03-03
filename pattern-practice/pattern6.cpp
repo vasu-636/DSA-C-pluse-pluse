@@ -13,7 +13,7 @@
 //         for( int s = 5 ; s > i ; s--){
 //             cout <<"   ";
 //         }
-//         for(int j = 1 ; j <= i ; j++){
+//         for(int j = 1 ; j >= 1 ; j--){
 //             cout << j << " ";
 //         }
 //         cout << endl;
