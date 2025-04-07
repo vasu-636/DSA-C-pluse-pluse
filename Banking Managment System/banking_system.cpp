@@ -1,139 +1,213 @@
+
 #include <iostream>
-#include <string>
 using namespace std;
 
-class Bank {
-protected:
-    int accnumber;
-    int balance = 0;
-    string name;
-    string password;
+class BankAccount {
+    protected:
+        int accountNumber, balance = 0;
+        string accountHolderName;
+    public:
+        void createAccount(int acnumber, string name , int balance) {
+            this->accountNumber = acnumber;
+            this->balance = balance;
+            this->accountHolderName = name;
+            cout << "\nAccount Created Successfully!";
+        }
 
-public:
-    void create_account(int accnum, string nameInput, string passInput) {
-        accnumber = accnum;
-        name = nameInput;
-        password = passInput;
-        cout << "Account created successfully!\n";
-    }
+        void displayAccountInfo() {
+            cout << "\n---------Account Details-----------" << endl;
+            cout << "\nAccount Number : " << this->accountNumber;
+            cout << "\nAccount Holder Name : " << this->accountHolderName;
+            cout << "\nAccount Balance : " << this->balance;
+            cout << "\n-----------------------------------" << endl;
+        }   
 
-    bool verify_password(string passInput) {
-        return password == passInput;
-    }
+        int getAccNumber() {
+            return this->accountNumber;
+        }
 
-    int getAccNumber() {
-        return accnumber;
-    }
 
     void deposit(int amount) {
-        if (amount > 0) {
-            balance += amount;
-            cout << "Deposit successful! Current balance: " << balance << endl;
-        } else {
-            cout << " Invalid deposit amount!" << endl;
-        }
+        this->balance += amount;
+        cout << "Amount Added Successfully!";
+        cout << "Current Balance after deposite : " << this->balance;
     }
+
 
     void withdraw(int amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            cout << "Withdrawal successful! Current balance: ₹" << balance << endl;
+        if (this->balance >= amount) {
+            this->balance -= amount;
+            cout << "Amount Withdrawn Successfully!";
+            cout << " Current balance is: " << this->balance;
         } else {
-            cout << "Invalid withdrawal amount!" << endl;
+            cout << "You have insufficient Balance!";
         }
     }
+};
 
-    void account_details() {
-        cout << "Account Number: " << accnumber << endl;
-        cout << "Account Holder Name: " << name << endl;
-        cout << "Current Balance: " << balance << endl;
+
+class SavingAccount : public BankAccount {
+public:
+    void calculateInterest(double interestRate) {
+        this->balance += (this->balance / 100) * interestRate;
+        cout << "Interest Added Successfully!";
     }
 };
 
-class Account : public Bank {
-    // Inherits everything from Bank
-};
 
 int main() {
-    Account acc[10]; // array of Account objects
-    int accCount = 0;
-    int choice;
+    SavingAccount account[10];
+    string name;
+    int accountNumber, count = 0;
+    int choice , balance;
+
 
     do {
-        cout << "\n=== Welcome to the Banking System ===\n";
-        cout << "1. Create Account\n";
-        cout << "2. Deposit\n";
-        cout << "3. Withdraw\n";
-        cout << "4. Account Details\n";
-        cout << "5. Exit\n";
-        cout << "Enter your choice: ";
+        cout << "\n----------Welcome to SBI Bank ---------";
+        cout << "\n1. Create Account";
+        cout << "\n2. View Account Details";
+        cout << "\n3. Deposit";
+        cout << "\n4. Withdraw";
+        cout << "\n5. Calculate Interest";
+        cout << "\n6. Exit";
+        cout << "\nEnter your choice: ";
         cin >> choice;
 
-        if (choice == 1) {
-            if (accCount >= 10) {
-                cout << "Cannot create more than 10 accounts.\n";
-                continue;
-            }
-            int accnum;
-            string name;
-            string pass;
 
+        switch (choice) {
+        case 1: {
+            bool exists = false;
             cout << "Enter Account Number: ";
-            cin >> accnum;
-            cout << "Enter Account Holder Name: ";
+            cin >> accountNumber;
             cin.ignore();
-            getline(cin, name);
-            cout << "Set Password: ";
-            getline(cin, pass);
 
-            acc[accCount].create_account(accnum, name, pass);
-            accCount++;
-        }
 
-        else if (choice >= 2 && choice <= 4) {
-            int accnum;
-            string pass;
-            cout << "Enter Account Number: ";
-            cin >> accnum;
-            cout << "Enter Password: ";
-            cin.ignore();
-            getline(cin, pass);
-
-            bool found = false;
-            for (int i = 0; i < accCount; i++) {
-                if (acc[i].getAccNumber() == accnum && acc[i].verify_password(pass)) {
-                    found = true;
-                    if (choice == 2) {
-                        int amt;
-                        cout << "Enter amount to deposit: ";
-                        cin >> amt;
-                        acc[i].deposit(amt);
-                    } else if (choice == 3) {
-                        int amt;
-                        cout << "Enter amount to withdraw: ";
-                        cin >> amt;
-                        acc[i].withdraw(amt);
-                    } else if (choice == 4) {
-                        acc[i].account_details();
-                    }
+            for (int i = 0; i < count; i++) {
+                if (account[i].getAccNumber() == accountNumber) {
+                    exists = true;
                     break;
                 }
             }
 
-            if (!found) {
-                cout << "Incorrect account number or password.\n";
+
+            if (!exists) {
+                cout << "Enter Name: ";
+                getline(cin, name);
+                cout << "Enter first deposite  : ";
+                cin >> balance;
+                account[count].createAccount(accountNumber, name , balance);
+                count++;
+            } else {
+                cout << "Account already exists!";
             }
+            break;
+        }
+        case 2: {
+            int acnumber;
+            bool found = false;
+            cout << "Enter Account Number: ";
+            cin >> acnumber;
+
+
+            for (int i = 0; i < count; i++) {
+                if (account[i].getAccNumber() == acnumber) {
+                    found = true;
+                    account[i].displayAccountInfo();
+                    break;
+                }
+            }
+
+
+            if (!found) {
+                cout << "Please Enter Valid Account Number!";
+            }
+            break;
+        }
+        case 3: {
+            int acnumber, amount;
+            bool found = false;
+            cout << "Enter Account Number: ";
+            cin >> acnumber;
+
+
+            for (int i = 0; i < count; i++) {
+                if (account[i].getAccNumber() == acnumber) {
+                    found = true;
+                    cout << "Enter Amount: ";
+                    cin >> amount;
+                    account[i].deposit(amount);
+                    break;
+                }
+            }
+
+
+            if (!found) {
+                cout << "Please Enter Valid Account Number!";
+            }
+            break;
+        }
+        case 4: {
+            int acnumber, amount;
+            bool found = false;
+            cout << "Enter Account Number: ";
+            cin >> acnumber;
+
+
+            for (int i = 0; i < count; i++) {
+                if (account[i].getAccNumber() == acnumber) {
+                    found = true;
+                    cout << "Enter Amount: ";
+                    cin >> amount;
+                    account[i].withdraw(amount);
+                    break;
+                }
+            }
+
+
+            if (!found) {
+                cout << "Please Enter Valid Account Number!";
+            }
+            break;
+        }
+        case 5: {
+            int acnumber;
+            double interestRate;
+            bool found = false;
+            cout << "Enter Account Number: ";
+            cin >> acnumber;
+            cout << "Enter Interest Rate (%): ";
+            cin >> interestRate;
+
+
+            for (int i = 0; i < count; i++) {
+                if (account[i].getAccNumber() == acnumber) {
+                    found = true;
+                    account[i].calculateInterest(interestRate);
+                    break;
+                }
+            }
+
+
+            if (!found) {
+                cout << "Please Enter Valid Account Number!";
+            }
+            break;
+        }
+        case 6:
+            cout << "Thank you for banking with us!";
+            break;
+
+
+        default:
+            cout << "Invalid choice!";
         }
 
-        else if (choice == 5) {
-            cout << "Exiting the Banking System. Thank you!\n";
-        }
 
-        else {
-            cout << "Invalid choice. Try again.\n";
-        }
+    } while (choice != 6);
 
-    } while (choice != 5);
 
     return 0;
 }
+
+
+
