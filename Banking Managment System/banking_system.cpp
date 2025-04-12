@@ -59,18 +59,18 @@ int main() {
     SavingAccount account[10];
     string name;
     int accountNumber, count = 0;
-    int choice , balance;
+    int choice , balance = 0 ;
 
 
     do {
-        cout << "\n----------Welcome to SBI Bank ---------";
-        cout << "\n1. Create Account";
-        cout << "\n2. View Account Details";
-        cout << "\n3. Deposit";
-        cout << "\n4. Withdraw";
-        cout << "\n5. Calculate Interest";
-        cout << "\n6. Exit";
-        cout << "\nEnter your choice: ";
+        cout << "----------Welcome to SBI Bank ---------" << endl;
+        cout << "1. Create Account" << endl;
+        cout << "2. View Account Details" << endl;
+        cout << "3. Deposit" << endl;
+        cout << "4. Withdraw" << endl;
+        cout << "5. Calculate Interest" << endl;
+        cout << "6. Exit" << endl;
+        cout << "Enter your choice: ";
         cin >> choice;
 
 
