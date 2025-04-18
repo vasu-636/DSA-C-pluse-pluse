@@ -85,7 +85,7 @@ int main(){
             }
                  if (isFound == false)
                  {   cout << "------------------------------"<<endl;
-                     cout << "Student Is Not Found..."<<endl;
+                     cout << "Student not found..."<<endl;
                      cout << "------------------------------"<<endl;
                  }
                     break;
@@ -107,7 +107,7 @@ int main(){
                     }
                     if (isFound == false)
                     {   cout << "------------------------------"<<endl;
-                        cout << "Student Is Not Found..."<<endl;
+                        cout << "Student not found..."<<endl;
                         cout << "------------------------------"<<endl;
                     }
                     break;
