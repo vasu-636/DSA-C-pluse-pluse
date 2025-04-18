@@ -30,11 +30,11 @@ int main(){
 
         do
         {
-            cout << "Enter 1 to Add Student to a list ." <<endl;
-            cout << "Enter 2 to Display the list of student ." <<endl;
-            cout << "Enter 3 to remove student from the list ." <<endl;
-            cout << "Enter 4 to Add search a Student ." <<endl;
-            cout << "Enter 0 to exit ." <<endl;
+            cout << " 1. Add Student to a list ." <<endl;
+            cout << " 2. Display the list of student ." <<endl;
+            cout << " 3. Remove student from the list ." <<endl;
+            cout << " 4. Add search a Student ." <<endl;
+            cout << " 5. Exit ." <<endl;
             cout << "Enter your choice : " ;
             cin >> choice;
             switch (choice)
@@ -112,19 +112,14 @@ int main(){
                     }
                     break;
                 }
-                case 0 :{
+                case 5 :{
                     cout << "------------------------------"<<endl;
                     cout << "Thank you visit again " << endl;
                     cout << "------------------------------"<<endl;
                     break;
                 }
-                default :{
-                    cout << "------------------------------"<<endl;
-                    cout << "Invalide Choice " << endl;
-                    cout << "------------------------------"<<endl;
-                    break;
-                }
+               
             }
-        } while (choice != 0);
+        } while (choice != 5);
     return 0;
 }
