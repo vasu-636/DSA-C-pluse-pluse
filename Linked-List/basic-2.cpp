@@ -5,25 +5,21 @@ class Node {
 public:
     int data;
     Node* next;
-
-    // Constructor to initialize a node
     Node(int value) {
-        data = value;
-        next = NULL;
+        this->data = value;
+        this->next = NULL;
     }
 };
 
 class LinkedList {
 private:
     Node* head;
-
 public:
-    // Constructor to initialize the linked list
+    
     LinkedList() {
-        head = NULL;
+        this->head = NULL;
     }
 
-    // Function to add node at the end
     void addNode(int value) {
         Node* newNode = new Node(value);
         if (head == NULL) {
@@ -36,7 +32,6 @@ public:
         }
     }
 
-    // Function to display the list
     void displayList() {
         Node* temp = head;
         cout << "Linked List: ";
@@ -51,8 +46,10 @@ public:
 int main() {
     LinkedList list;
     int value;
-
-    for (int i = 1; i <= 3; i++) {
+    int n;
+    cout << "Enter the number of nodes to add: ";
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
         cout << "Enter value " << i << ": ";
         cin >> value;
         list.addNode(value);
