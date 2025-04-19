@@ -20,13 +20,24 @@ public:
         this->head = NULL;
     }
 
-    void addAtStart(int value) {
+    void displayList() {
+        Node* temp = head;
+        cout << "Linked List: ";
+        while (temp != NULL) {
+            cout << temp->data << " -> ";
+            temp = temp->next;
+        }
+        cout << "NULL\n";
+    }
+
+    bool addAtStart(int value) {
         Node* newNode = new Node(value);
         newNode->next = head;
         head = newNode;
+        return true;
     }
 
-    void addAtEnd(int value) {
+    bool addAtEnd(int value) {
         Node* newNode = new Node(value);
         if (head == NULL) {
             head = newNode;
@@ -36,14 +47,15 @@ public:
                 temp = temp->next;
             temp->next = newNode;
         }
+        return true;
     }
 
-    void addAtPosition(int value, int position) {
+    bool addAtPosition(int value, int position) {
         Node* newNode = new Node(value);
         if (position == 0) {
             newNode->next = head;
             head = newNode;
-            return;
+            return true;
         }
 
         Node* temp = head;
@@ -53,48 +65,50 @@ public:
         if (temp == NULL) {
             cout << "Position out of bounds." << endl;
             delete newNode;
-            return;
+            return false;
         }
 
         newNode->next = temp->next;
         temp->next = newNode;
+        return true;
     }
 
-    void deleteAtStart() {
+    bool deleteAtStart() {
         if (head == NULL) {
             cout << "List is empty." << endl;
-            return;
+            return false;
         }
         Node* temp = head;
         head = head->next;
         delete temp;
+        return true;
     }
 
-    void deleteAtEnd() {
+    bool deleteAtEnd() {
         if (head == NULL) {
             cout << "List is empty." << endl;
-            return;
+            return false;
         }
         if (head->next == NULL) {
             delete head;
             head = NULL;
-            return;
+            return true;
         }
         Node* temp = head;
         while (temp->next->next != NULL)
             temp = temp->next;
         delete temp->next;
         temp->next = NULL;
+        return true;
     }
 
-    void deleteAtPosition(int position) {
+    bool deleteAtPosition(int position) {
         if (head == NULL) {
             cout << "List is empty." << endl;
-            return;
+            return false;
         }
         if (position == 0) {
-            deleteAtStart();
-            return;
+            return deleteAtStart();
         }
 
         Node* temp = head;
@@ -103,23 +117,13 @@ public:
 
         if (temp == NULL || temp->next == NULL) {
             cout << "Position out of bounds." << endl;
-            return;
+            return false;
         }
 
         Node* toDelete = temp->next;
         temp->next = toDelete->next;
         delete toDelete;
-        toDelete = NULL;
-    }
-
-    void displayList() {
-        Node* temp = head;
-        cout << "Linked List: ";
-        while (temp != NULL) {
-            cout << temp->data << " -> ";
-            temp = temp->next;
-        }
-        cout << "NULL\n";
+        return true;
     }
 };
 
@@ -144,9 +148,10 @@ int main() {
                 int value;
                 cout << "Enter value to add at start: ";
                 cin >> value;
-                list.addAtStart(value);
-                count++;
-                cout << "Node added at start." << endl;
+                if (list.addAtStart(value)) {
+                    count++;
+                    cout << "Node added at start." << endl;
+                }
                 break;
             }
 
@@ -154,9 +159,10 @@ int main() {
                 int value;
                 cout << "Enter value to add at end: ";
                 cin >> value;
-                list.addAtEnd(value);
-                count++;
-                cout << "Node added at end." << endl;
+                if (list.addAtEnd(value)) {
+                    count++;
+                    cout << "Node added at end." << endl;
+                }
                 break;
             }
 
@@ -166,31 +172,35 @@ int main() {
                 cin >> value;
                 cout << "Enter position to add at: ";
                 cin >> position;
-                list.addAtPosition(value, position);
-                count++;
-                cout << "Node added at position." << endl;
+                if (list.addAtPosition(value, position)) {
+                    count++;
+                    cout << "Node added at position." << endl;
+                }
                 break;
             }
 
             case 4:
-                list.deleteAtStart();
-                if (count > 0) count--;
-                cout << "Node deleted at start." << endl;
+                if (list.deleteAtStart()) {
+                    count--;
+                    cout << "Node deleted at start." << endl;
+                }
                 break;
 
             case 5:
-                list.deleteAtEnd();
-                if (count > 0) count--;
-                cout << "Node deleted at end." << endl;
+                if (list.deleteAtEnd()) {
+                    count--;
+                    cout << "Node deleted at end." << endl;
+                }
                 break;
 
             case 6: {
                 int position;
                 cout << "Enter position to delete: ";
                 cin >> position;
-                list.deleteAtPosition(position);
-                if (count > 0) count--;
-                cout << "Node deleted at position." << endl;
+                if (list.deleteAtPosition(position)) {
+                    count--;
+                    cout << "Node deleted at position." << endl;
+                }
                 break;
             }
 
