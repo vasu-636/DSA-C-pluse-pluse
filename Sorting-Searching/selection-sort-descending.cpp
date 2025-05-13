@@ -8,11 +8,11 @@ public:
         for (int i = 0; i < arr.size() - 1; i++) {
             int maxIdx = i;
             for (int j = i + 1; j < arr.size(); j++) {
-                if (arr[j] > arr[maxIdx]) { // Changed < to > for descending
+                if (arr[j] > arr[maxIdx]) { 
                     maxIdx = j;
                 }
             }
-            // Swap outside the inner loop
+            
             int temp = arr[maxIdx];
             arr[maxIdx] = arr[i];
             arr[i] = temp;
