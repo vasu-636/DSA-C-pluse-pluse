@@ -228,6 +228,7 @@ int main() {
             }
 
         } else if (choice == 5) {
+            cout << "-----------------------------" << endl;
             if (books.empty()) {
                 cout << "No books in library." << endl;
             } else {
